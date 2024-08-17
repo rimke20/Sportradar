@@ -1,6 +1,6 @@
 # Postman Collection Setup and Test Execution Instructions
 
-In this file instructions will be written on how to import and run Postman collections and environment files in Postman.
+This document contains instructions on how to import and run Postman collections and environment files in Postman.
 
 ## Prerequisites
 
