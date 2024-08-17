@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "11c41360-4918-4e6a-ad87-042038c0d49d",
+		"name": "Sportradar - update user invalid name format",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25222285"
+	},
+	"item": [
+		{
+			"name": "Update User - invalid name format",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Error message should be 'Invalid name format.'\", function () {",
+							"    pm.expect(jsonData.error).to.eql('Invalid name format.');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var USER_ID = \"2\";",
+							"pm.environment.set(\"USER_ID\", USER_ID);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": 121,\n    \"job\": \"{{TEST_JOB}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/users/{{USER_ID}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"{{USER_ID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

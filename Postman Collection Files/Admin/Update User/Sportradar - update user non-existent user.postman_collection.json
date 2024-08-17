@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "fbe3034a-bab4-45fc-8c91-5b4c159d446a",
+		"name": "Sportradar - update user non-existent user",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25222285"
+	},
+	"item": [
+		{
+			"name": "Update User - non-existent user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Error message should be 'User not found.'\", function () {",
+							"    pm.expect(jsonData.error).to.eql('User not found.');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"{{TEST_NAME}}\",\n    \"job\": \"{{TEST_JOB}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/users/:id",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1000000000000"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
