@@ -1,4 +1,4 @@
-<span style="font-size: 2em; font-weight: bold;">User Role:</span>
+# User Role:
 
 ## Scenario 1: Register
 
@@ -60,7 +60,7 @@ Given a logged-in user with an invalid or expired session token
 When the user submits a logout request  
 Then the logout should fail, and the user should receive an error message indicating that the session token is invalid.
 
-<span style="font-size: 2em; font-weight: bold;">Admin Role:</span>
+# Admin Role:
 
 ## Scenario 4: Update User
 
